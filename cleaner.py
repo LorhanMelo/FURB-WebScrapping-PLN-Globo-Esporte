@@ -14,6 +14,8 @@ class Cleaner:
         if not isinstance(text, str):
             text = str(text)
 
+        text = text.lower()
+
         doc = nlp(text)
         tokens = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
         return ' '.join(tokens)
