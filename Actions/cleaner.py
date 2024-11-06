@@ -15,7 +15,10 @@ class Cleaner:
 
         doc = nlp(text)
 
-        tokens = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
+        words_to_remove = ["ge", "globo", "sportv", "canal", "podcast", "clique", "seguir", "siga", "sigar", "facebook", "GEPR", "+ GEPR", 'whatsapp']
+
+        tokens = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct and token.text.lower() not in words_to_remove]
+
         return ' '.join(tokens)
 
     def process_csv(self, file_path):
